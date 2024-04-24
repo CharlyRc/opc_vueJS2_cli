@@ -1,7 +1,6 @@
 <script>
 export default {
   name: 'BaseButton',
-  props: ['text']
 }
 </script>
 

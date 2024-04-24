@@ -47,7 +47,7 @@ Les principaux hooks de cycle de vie dans Vue :
         -> beforeDestroyed
         -> destroyed
 
-<$emit> est une fonction utilisée pour déclencher un événement personnalisé à partir d'un composant enfant vers son composant parent
+<$emit> est une fonction utilisée pour déclencher un événement personnalisé à partir d'un composant enfant vers son composant parent (transmission de données)
 <slot> Permet d'ajouter du html dans la balise parent
     - Si besoin de plusieurs slots déclarer comme ceci dans le composant enfant :
         -> slot <slot name="nom-du-slot"></slot>
@@ -55,3 +55,10 @@ Les principaux hooks de cycle de vie dans Vue :
         ->  <template v-slot:nom-du-slot>
                 <h3>Exemple texte</h3>
             </template>
+
+<Vuex> est un gestionnaire d'état et une bibliothèque pour les applications Vue.js. Il permet de créer un store centralisé.
+    - Store de Vuex
+        -> state est semblable à la partie data avec un système de déclaration en clé valeur
+        -> getters sont vu un peu comme computer et l'équivalent de la propriété calculée.
+    - On peut accéder à une donnée du store en utilisant la syntaxe {{ $store.state.nomDuState }} ou {{ $store.getters.nomDuGetters }}
+    Il est également possible d'utiliser mapState ou mapGetters dans la propriété computed du composant selon les besoins via un spred operator
