@@ -46,3 +46,12 @@ Les principaux hooks de cycle de vie dans Vue :
     - <Destroy> - qui représente le moment où le composant va être retiré de la page
         -> beforeDestroyed
         -> destroyed
+
+<$emit> est une fonction utilisée pour déclencher un événement personnalisé à partir d'un composant enfant vers son composant parent
+<slot> Permet d'ajouter du html dans la balise parent
+    - Si besoin de plusieurs slots déclarer comme ceci dans le composant enfant :
+        -> slot <slot name="nom-du-slot"></slot>
+    Et comme ceci dans le composant parent :
+        ->  <template v-slot:nom-du-slot>
+                <h3>Exemple texte</h3>
+            </template>
