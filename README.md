@@ -30,3 +30,19 @@ Un composant avec l'extension <.vue> est composé de 3 blocs
     <Script> - où vit votre JavaScript
     <Template> - où vit votre HTML
     <Style> - où vit votre CSS
+
+Dans la partie script on va généralement retrouver 3 parties :
+    - <Data> utilisée pour déclarer les données initiales du composant
+    - <Computed> utilisée pour définir des propriétés calculées (dynamique)
+    - <Methods> utilisée pour définir les méthodes ou les fonctions qui seront utilisées pour réagir aux événements ou pour effectuer des actions dans le composant
+
+Les principaux hooks de cycle de vie dans Vue :
+    - <Create> - qui représente la durée pendant laquelle le composant est en construction.
+        -> beforeCreate
+        -> created
+    - <Mount> - qui représente le moment durant lequel le composant va être rendu sur notre page
+        -> beforeMount
+        -> mounted
+    - <Destroy> - qui représente le moment où le composant va être retiré de la page
+        -> beforeDestroyed
+        -> destroyed
