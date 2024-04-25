@@ -58,7 +58,9 @@ Les principaux hooks de cycle de vie dans Vue :
 
 <Vuex> est un gestionnaire d'état et une bibliothèque pour les applications Vue.js. Il permet de créer un store centralisé.
     - Store de Vuex
-        -> state est semblable à la partie data avec un système de déclaration en clé valeur
-        -> getters sont vu un peu comme computer et l'équivalent de la propriété calculée.
-    - On peut accéder à une donnée du store en utilisant la syntaxe {{ $store.state.nomDuState }} ou {{ $store.getters.nomDuGetters }}
-    Il est également possible d'utiliser mapState ou mapGetters dans la propriété computed du composant selon les besoins via un spred operator
+        -> <state> est semblable à la partie data avec un système de déclaration en clé valeur
+        -> <getters> sont vu un peu comme computer et l'équivalent de la propriété calculée.
+            - On peut accéder à une donnée du store en utilisant la syntaxe {{ $store.state.nomDuState }} ou {{ $store.getters.nomDuGetters }}
+            Il est également possible d'utiliser mapState ou mapGetters dans la propriété computed du composant selon les besoins via un spread operator
+        -> <mutations> (synchrones) qui permettent de mettre à jour/modifier le state
+        -> <actions> (asynchrones) qui servent à donner la logique des mutations, c'est la partie semblable à methods

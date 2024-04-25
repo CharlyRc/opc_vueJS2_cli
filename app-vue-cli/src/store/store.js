@@ -38,7 +38,7 @@ export default new Vuex.Store({
                 quantity: 1,
                 price: 4.99
             }
-        ]
+        ],
     },
     getters:{
         formattedDate(state){
@@ -51,7 +51,9 @@ export default new Vuex.Store({
 		}
     },
     mutations: {
-
+        addToCart(state, amount) {
+            state.shoppingCart += amount;
+          }
     },
     actions: {
 

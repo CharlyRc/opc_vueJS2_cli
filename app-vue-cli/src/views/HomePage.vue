@@ -1,25 +1,16 @@
 <template>
 	<div>
-		<h1>{{ $store.state.restaurantName }}</h1>
+		<h1>{{ restaurantName }}</h1>
 		<p class="description">
-			Bienvenue dans notre café {{ $store.state.restaurantName }}! Nous sommes réputés pour
-			notre pain et nos merveilleuses pâtisseries. Faites vous plaisir dès le
-			matin ou avec un goûter réconfortant. Mais attention, vous verrez qu'il
-			est difficile de s'arrêter.
+			Bienvenue dans notre café {{ restaurantName }}! Nous sommes réputés pour notre pain et nos merveilleuses
+			pâtisseries. Faites vous plaisir dès le matin ou avec un goûter réconfortant. Mais attention, vous verrez
+			qu'il est difficile de s'arrêter.
 		</p>
 
 		<section class="menu">
 			<h2>Menu</h2>
-			<MenuItem 
-                @update-shopping-cart="setShoppingCart"
-				v-for="item in simpleMenu"
-				:name="item.name"
-				:image="item.image"
-				:price="item.price"
-				:quantity="item.quantity"
-				:inStock="item.inStock"
-				:key="item.name"
-			/>
+			<MenuItem v-for="item in simpleMenu" :key="item.name" :item="item" @add-items-to-cart="addToShoppingCart"
+				@update:quantity="updateItemQuantity" />
 		</section>
 
 		<div class="shopping-cart">
@@ -27,38 +18,36 @@
 		</div>
 
 		<footer class="footer">
-			<p>{{$store.getters.copyright}} {{ $store.getters.formattedDate }}</p>
+			<p>{{ copyright }} {{ formattedDate }}</p>
 		</footer>
 	</div>
 </template>
 
 <script>
-import MenuItem from "../components/MenuItem"
-import {mapState} from 'vuex'
+import MenuItem from "../components/MenuItem";
+import { mapState } from "vuex";
 
 export default {
 	name: "HomePage",
 	components: {
-		MenuItem
+		MenuItem,
 	},
-	data() {
-		return {
-			
-		}
-	},
-	computed: {
-		...mapState({
-			restaurantName: "restaurantName",
-			shoppingCart: "shoppingCart",
-			simpleMenu: "simpleMenu"
-		})
-	},
+	computed: mapState({
+		restaurantName: "restaurantName",
+		shoppingCart: "shoppingCart",
+		simpleMenu: "simpleMenu",
+		copyright: "copyright",
+		formattedDate: "formattedDate",
+	}),
 	methods: {
-		setShoppingCart(amount) {
-            this.shoppingCart += amount
-        }
-	}
-}
+		updateItemQuantity({ item, quantity }) {
+			item.quantity = parseInt(quantity);
+		},
+		addToShoppingCart(quantity) {
+			this.$store.commit("addToCart", quantity);
+		},
+	},
+};
 </script>
 
 <style lang="scss">
